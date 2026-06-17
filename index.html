@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo do UFC - Notícias e Card</title>
+    <title>Mundo do UFC - Eventos e Rankings</title>
     <style>
         /* Estilo Geral */
         body {
-            font-family: 'Arial Black', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #111;
             color: #fff;
             margin: 0;
@@ -20,12 +20,13 @@
             padding: 20px;
             text-align: center;
             text-transform: uppercase;
+            font-weight: bold;
             letter-spacing: 2px;
         }
 
         /* Conteúdo Principal */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 30px auto;
             padding: 20px;
             background-color: #222;
@@ -37,46 +38,88 @@
             color: #d20a0a;
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        /* Área de Lutas (Card) */
+        /* Seção de Eventos */
+        .grid-eventos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
         .card-evento {
-            background-color: #333;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 5px solid #d20a0a;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-top: 4px solid #d20a0a;
             border-radius: 4px;
+            padding: 20px;
+            text-align: center;
         }
 
-        .luta-principal {
-            font-size: 1.2em;
+        .card-evento .nome-evento {
             font-weight: bold;
+            font-size: 1.2em;
             color: #fff;
+            margin-bottom: 5px;
         }
 
-        .categoria {
-            color: #aaa;
+        .card-evento .data-evento {
+            color: #d20a0a;
             font-size: 0.9em;
-            font-style: italic;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
-    </style>
-</head>
-<body>
 
-    <header>
-        <h1>Portal UFC Fan</h1>
-    </header>
+        .card-evento .luta-principal {
+            font-size: 1.1em;
+            font-weight: bold;
+            background-color: #252525;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
 
-    <div class="container">
-        <h2>Próximo Evento</h2>
-        <div class="card-evento">
-            <p class="categoria">Disputa de Cinturão - Peso leve</p>
-            <p class="luta-principal">Mcgregor vs Prates 2</p>
-        </div>
+        .card-evento .local-evento {
+            color: #888;
+            font-size: 0.85em;
+        }
 
-        <h2>Últimas Notícias</h2>
-        <p>Fique por dentro de tudo o que acontece no octógono mais famoso do mundo. Em breve, análises detalhadas de cada card e estatísticas dos lutadores.</p>
-    </div>
+        /* Estilização da Tabela de Ranking */
+        .tabela-ranking {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1a1a1a;
+            margin-bottom: 40px;
+        }
 
-</body>
-</html>
+        .tabela-ranking th, .tabela-ranking td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .tabela-ranking th {
+            background-color: #333;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        .tabela-ranking tr:hover {
+            background-color: #282828;
+        }
+
+        .campeao {
+            color: #ffd700; /* Dourado para o campeão */
+            font-weight: bold;
+        }
+
+        .posicao {
+            font-weight: bold;
+            color: #d20a0a;
+            width: 50px;
+        }
