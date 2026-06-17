@@ -4,122 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo do UFC - Eventos e Rankings</title>
-    <style>
-        /* Estilo Geral */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Portal UFC Fan</h1>
+    </header>
+
+    <div class="container">
         
-        /* Cabeçalho */
-        header {
-            background-color: #d20a0a; /* Vermelho UFC */
-            padding: 20px;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+        <h2>Próximos Eventos</h2>
+        <div class="grid-eventos">
+            
+            <div class="card-evento">
+                <div class="nome-evento">UFC Vegas</div>
+                <div class="data-evento">Sábado, Próximo Fim de Semana</div>
+                <p>Luta Principal:</p>
+                <div class="luta-principal">Jon Jones vs Stipe Miocic</div>
+                
+                <button class="btn-palpite" onclick="mostrarPalpite()">Ver Palpite do Especialista</button>
+                <p id="palpite-luta" class="resultado-palpite"></p>
 
-        /* Conteúdo Principal */
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #222;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
-        }
+                <div class="local-evento">📍 UFC APEX, Las Vegas</div>
+            </div>
 
-        h2 {
-            color: #d20a0a;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            text-transform: uppercase;
-        }
+            <div class="card-evento">
+                <div class="nome-evento">UFC Numérico</div>
+                <div class="data-evento">No Próximo Mês</div>
+                <p>Disputa de Cinturão:</p>
+                <div class="luta-principal">Islam Makhachev vs Arman Tsarukyan</div>
+                <div class="local-evento">📍 Madison Square Garden, Nova York</div>
+            </div>
 
-        /* Seção de Eventos */
-        .grid-eventos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
+        </div>
 
-        .card-evento {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-top: 4px solid #d20a0a;
-            border-radius: 4px;
-            padding: 20px;
-            text-align: center;
-        }
+        <h2>Ranking Peso Pesado (Até 120,2 kg)</h2>
+        <table class="tabela-ranking">
+            <thead>
+                <tr>
+                    <th class="posicao">Pos</th>
+                    <th>Lutador</th>
+                    <th>Cartel (V-D-E)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="campeao">
+                    <td class="posicao">C</td>
+                    <td>Jon Jones (Campeão)</td>
+                    <td>27-1-0 (1 NC)</td>
+                </tr>
+                <tr>
+                    <td class="posicao">1</td>
+                    <td>Tom Aspinall (Campeão Interino)</td>
+                    <td>14-3-0</td>
+                </tr>
+                <tr>
+                    <td class="posicao">2</td>
+                    <td>Ciryl Gane</td>
+                    <td>12-2-0</td>
+                </tr>
+                <tr>
+                    <td class="posicao">3</td>
+                    <td>Alexander Volkov</td>
+                    <td>38-10-0</td>
+                </tr>
+            </tbody>
+        </table>
 
-        .card-evento .nome-evento {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #fff;
-            margin-bottom: 5px;
-        }
+        <h2>Ranking Peso Leve (Até 70,3 kg)</h2>
+        <table class="tabela-ranking">
+            <thead>
+                <tr>
+                    <th class="posicao">Pos</th>
+                    <th>Lutador</th>
+                    <th>Cartel (V-D-E)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="campeao">
+                    <td class="posicao">C</td>
+                    <td>Islam Makhachev (Campeão)</td>
+                    <td>26-1-0</td>
+                </tr>
+                <tr>
+                    <td class="posicao">1</td>
+                    <td>Arman Tsarukyan</td>
+                    <td>22-3-0</td>
+                </tr>
+                <tr>
+                    <td class="posicao">2</td>
+                    <td>Charles "do Bronx" Oliveira</td>
+                    <td>34-10-0 (1 NC)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        .card-evento .data-evento {
-            color: #d20a0a;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .card-evento .luta-principal {
-            font-size: 1.1em;
-            font-weight: bold;
-            background-color: #252525;
-            padding: 10px;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-
-        .card-evento .local-evento {
-            color: #888;
-            font-size: 0.85em;
-        }
-
-        /* Estilização da Tabela de Ranking */
-        .tabela-ranking {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #1a1a1a;
-            margin-bottom: 40px;
-        }
-
-        .tabela-ranking th, .tabela-ranking td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #333;
-        }
-
-        .tabela-ranking th {
-            background-color: #333;
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 0.9em;
-        }
-
-        .tabela-ranking tr:hover {
-            background-color: #282828;
-        }
-
-        .campeao {
-            color: #ffd700; /* Dourado para o campeão */
-            font-weight: bold;
-        }
-
-        .posicao {
-            font-weight: bold;
-            color: #d20a0a;
-            width: 50px;
-        }
+    <script src="script.js"></script>
+</body>
+</html>
