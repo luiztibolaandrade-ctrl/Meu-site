@@ -3,5 +3,5 @@ function mostrarPalpite() {
     const textoPalpite = document.getElementById("palpite-luta");
     
     // Altera o texto dele
-    textoPalpite.innerText = "🔥 Nosso palpite: Vitória do mcgregor por Nocaute no 1º round!";
+    textoPalpite.innerText = "🔥 Nosso palpite: Vitória do Jon Jones por Nocaute no 1º round!";
 }
